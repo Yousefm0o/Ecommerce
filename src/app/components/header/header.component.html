@@ -1,0 +1,137 @@
+<nav>
+  <!-- <div class="overlay"></div> -->
+  <div class="links-menu" [ngClass]="{'opened': openMenuLinks}">
+    <ul>
+      <li routerLink="">
+        <a>Home</a>
+      </li>
+      <li routerLink="products">
+        <a>Products</a>
+      </li>
+      <li routerLink="cart">
+        <a>Cart</a>
+      </li>
+      <li (click)="scrollToContact()">
+        <a>Contact</a>
+      </li>
+    </ul>
+  </div>
+  <div class="wrapper">
+    <div class="logo">
+      <img src="../../../assets/Pics/logo.svg" alt="" (click)="goHome()">
+    </div>
+    <div class="links">
+      <ul>
+        <li routerLink="">
+          <a>Home</a>
+        </li>
+        <li routerLink="products">
+          <a>Products</a>
+        </li>
+        <li routerLink="cart">
+          <a>Cart</a>
+        </li>
+        <li (click)="scrollToContact()">
+          <a>Contact</a>
+        </li>
+      </ul>
+    </div>
+    <div class="user">
+
+      <div class="cart">
+        <button type="button" class="cart-btn" [matBadge]="numberOfItems === 0? null : numberOfItems" matBadgeColor="warn"
+        (click)="openCartMenu($event)">
+          <i class="bi bi-cart3 icon"></i>
+        </button>
+
+        <div class="menu-wrap" [ngClass]="{'open-menu': openMenuCart}"
+        (clickOutside)="closeMenu()">
+          <div class="cart-menu">
+            <h5>Cart state</h5>
+            <div class="container">
+              <div class="state">
+                <div class="items-num">
+                  <span>No. of items:</span>
+                  <span>{{ numberOfItems }}</span>
+                </div>
+                <div class="total-cost">
+                  <span>Total cost:</span>
+                  <span>{{ totalCost | currency }}</span>
+                </div>
+              </div>
+              <div class="btns">
+                <button type="button" class="btn btn-danger" (click)="clearCart()">Clear all</button>
+                <button type="button" class="btn btn-primary" routerLink="/cart">Go to cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="register btn btn-light" routerLink="/login" *ngIf="!loggedIn">Login &nbsp; Register</button>
+
+      <button type="button" class="user-img" (click)="openUserMenu($event)"  *ngIf="loggedIn">
+        <img *ngIf="!userData?.pic" src="../../../assets/Pics/no-image-user.png" alt="user">
+        <img *ngIf="userData?.pic" [src]="'../../../assets/Pics/' + userData?.pic" alt="user">
+      </button>
+
+      <div class="menu-wrap" [ngClass]="{'open-menu': openMenuUser}"
+      (clickOutside)="closeMenu()">
+        <div class="user-menu">
+          <div class="user-info" routerLink="/profile">
+            <img *ngIf="!userData?.pic" src="../../../assets/Pics/no-image-user.png" alt="user">
+            <img *ngIf="userData?.pic" [src]="'../../../assets/Pics/' + userData?.pic" alt="user">
+            <h5>{{ userData?.fName }} {{ userData?.lName }}</h5>
+          </div>
+          <hr>
+
+          <a routerLink="/profile/general" class="menu-link">
+            <!-- <img src="../../../assets/Pics/profile(alias).png" alt="general"> -->
+            <i class="bi bi-person-circle"></i>
+            <p>General</p>
+            <span>
+              <i class="bi bi-caret-right-fill"></i>
+            </span>
+          </a>
+          <a routerLink="/profile/general" class="menu-link">
+            <!-- <img src="../../../assets/Pics/profile(alias).png" alt="general"> -->
+            <!-- <i class="fa-solid fa-basket-shopping"></i> -->
+            <i class="bi bi-bag-check"></i>
+            <p>Track My Orders</p>
+            <span>
+              <i class="bi bi-caret-right-fill"></i>
+            </span>
+          </a>
+          <a routerLink="/profile/edit-profile" class="menu-link">
+            <!-- <img src="../../../assets/Pics/setting.png" alt="settings"> -->
+            <i class="bi bi-gear-fill"></i>
+            <p>Edit Profile</p>
+            <span>
+              <i class="bi bi-caret-right-fill"></i>
+            </span>
+          </a>
+          <a href="#" class="menu-link">
+            <!-- <img src="../../../assets/Pics/logout.png" alt="logout"> -->
+            <i class="bi bi-box-arrow-right"></i>
+            <p>Logout</p>
+            <span>
+              <i class="bi bi-caret-right-fill"></i>
+            </span>
+          </a>
+
+        </div>
+      </div>
+
+      <button class="links-btn" (click)="openMenu($event)">
+        <div>
+          <span [ngClass]="{'r1': openMenuLinks}"></span>
+          <span [ngClass]="{'r2': openMenuLinks}"></span>
+          <span [ngClass]="{'r3': openMenuLinks}"></span>
+        </div>
+      </button>
+
+    </div>
+  </div>
+</nav>
+<!-- <div class="back"></div> -->
+<!--  -->

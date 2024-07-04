@@ -1,0 +1,57 @@
+  <div class="wrapper">
+    <div class="log">
+      <div class="first">
+        <h3>Sign In</h3>
+        <form action="" [formGroup]="loginForm"
+        (ngSubmit)="login()">
+          <div class="field-1 mb-3">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="floatingInput" placeholder=""
+              formControlName="username">
+              <label for="floatingInput">Username</label>
+            </div>
+            <div class="text-danger error-message" *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+              <span *ngIf="loginForm.get('username')?.hasError('required')">*username is required.</span>
+            </div>
+          </div>
+          <div class="field-2">
+            <div class="form-floating">
+              <input type="password" class="form-control" id="floatingPassword" placeholder=""
+              formControlName="password">
+              <label for="floatingPassword">Password</label>
+            </div>
+            <div class="text-danger error-message" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+              <span *ngIf="loginForm.get('password')?.hasError('required')">*password is required.</span>
+            </div>
+          </div>
+          <button type="submit" class="sign btn btn-primary"
+          [disabled]="loginForm.invalid">Sign In</button>
+          <div class="appendices">
+            <div class="check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+                Remember Me
+              </label>
+            </div>
+            <div class="pass-forget">
+              <a href="">Forget Password?</a>
+            </div>
+          </div>
+          <!-- <div class="signup-section">
+            <p>Don't have an account?</p>
+            <button type="button" routerLink="/register">Sign Up</button>
+          </div> -->
+        </form>
+      </div>
+      <div class="second">
+        <h2>Welcome to login</h2>
+        <!-- <p>Don't have an account?</p>
+        <button type="button" routerLink="/register">Sign Up</button> -->
+        <div class="signup-section">
+          <p>Don't have an account?</p>
+          <button type="button" routerLink="/register">Sign Up</button>
+        </div>
+      </div>
+    </div>
+
+  </div>

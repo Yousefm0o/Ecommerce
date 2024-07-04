@@ -1,0 +1,111 @@
+<div class="page">
+  <div class="empty" *ngIf="cart.length == 0">
+    <span>
+      Your cart is empty...
+    </span>
+    <button type="button" class="btn btn-warning" routerLink="/products">Start Shopping</button>
+  </div>
+
+  <div class="wrapper" *ngIf="cart.length > 0">
+
+    <div class="btns">
+      <button type="button" class="btn btn-success" routerLink="/products">
+        <i class="fa-solid fa-turn-up turn"></i>
+        <span>Continue Shopping</span>
+      </button>
+      <button type="button" class="btn btn-success">
+        <span>Checkout</span>
+        <i class="bi bi-cash-coin"></i>
+      </button>
+    </div>
+
+    <div class="scroll">
+      <p>Swipe to right to see more info!</p>
+      <div class="arrows">
+        <i class="fa-solid fa-angle-right"></i>
+        <i class="fa-solid fa-angle-right"></i>
+        <i class="fa-solid fa-angle-right"></i>
+      </div>
+    </div>
+
+    <section class="container mat-elevation-z8" tabindex="0">
+        <table mat-table [dataSource]="cart">
+
+          <!-- Product Column -->
+          <ng-container matColumnDef="product">
+            <th class="table-header" mat-header-cell *matHeaderCellDef class="product header"> Product </th>
+            <td mat-cell *matCellDef="let product">
+              <img class="image" [src]="product.productImg" alt="">
+             </td>
+            <td class="total-cost table-footer" mat-footer-cell *matFooterCellDef>Total Cost :</td>
+          </ng-container>
+
+          <!-- Item Column -->
+          <ng-container matColumnDef="name">
+            <th class="table-header" mat-header-cell *matHeaderCellDef class="name header"> Item </th>
+            <td class="truncate max-w-s" mat-cell *matCellDef="let product"> {{product.title}} </td>
+            <td class="table-footer" mat-footer-cell *matFooterCellDef></td>
+          </ng-container>
+
+          <!-- Price Column -->
+          <ng-container matColumnDef="price">
+            <th class="table-header" mat-header-cell *matHeaderCellDef class="price header"> Price </th>
+            <td mat-cell *matCellDef="let product">
+              <div class="pricing">
+                <span [ngClass]="{'actual-price' : product.saleExist}">{{product.price | currency}}</span>
+                <span *ngIf="product.saleExist">{{product.newPrice | currency}}</span>
+              </div>
+            </td>
+            <td class="table-footer" mat-footer-cell *matFooterCellDef></td>
+          </ng-container>
+
+          <!-- Quantity Column -->
+          <ng-container matColumnDef="quantity">
+            <th class="table-header" mat-header-cell *matHeaderCellDef class="quantity header"> Quantity </th>
+            <td mat-cell *matCellDef="let product">
+              <div class="quantity-container">
+                <span (click)="increaseQuantity(product)">
+                  <i class="bi bi-plus-lg"></i>
+                </span>
+                <!-- <span class="quantity-value"> -->
+                  {{ product.quantity }}
+                <!-- </span> -->
+                <span (click)="decreaseQuantity(product)">
+                  <i class="bi bi-dash-lg"></i>
+                </span>
+              </div>
+            </td>
+            <td class="table-footer" mat-footer-cell *matFooterCellDef></td>
+          </ng-container>
+
+          <!-- Total Column -->
+          <ng-container matColumnDef="total">
+            <th class="table-header" mat-header-cell *matHeaderCellDef class="total header"> Total </th>
+            <td mat-cell *matCellDef="let product"> {{getEveryTotal(product) | currency}} </td>
+            <td class="table-footer" mat-footer-cell *matFooterCellDef>
+              <span class="total-cost">
+                {{ totalCost | currency}}
+              </span>
+            </td>
+          </ng-container>
+
+          <!-- Actions Column -->
+          <ng-container matColumnDef="action">
+            <th class="table-header" mat-header-cell *matHeaderCellDef class="action header">
+              <button type="button" class="btn btn-danger" id="clear-all"
+              (click)="clearCart()">Clear All</button>
+            </th>
+            <td mat-cell *matCellDef="let product">
+              <button type="button" class="btn btn-danger remove"
+              (click)="removeItem(product)">remove</button>
+            </td>
+            <td class="table-footer" mat-footer-cell *matFooterCellDef></td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr>
+        </table>
+    </section>
+  </div>
+</div>

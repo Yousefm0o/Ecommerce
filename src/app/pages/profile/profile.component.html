@@ -1,0 +1,50 @@
+<div class="page">
+  <div class="wrapper">
+    <div class="side-bar">
+      <div class="brief">
+        <img *ngIf="!userData?.pic" src="../../../assets/Pics/no-image-user.png" alt="user">
+        <img *ngIf="userData?.pic" [src]="'../../../assets/Pics/' + userData?.pic" alt="user">
+        <div class="text">
+          <h4>Hello, {{ userData?.fName }}!</h4>
+          <p>{{ userData?.userName}}</p>
+        </div>
+      </div>
+      <ul>
+        <li routerLink="/profile/general" [ngClass]="{'active': selected == 'general'}">
+          <i class="bi bi-person-circle"></i>
+          <h5>General</h5>
+          <span></span>
+        </li>
+        <li routerLink="/profile/orders" [ngClass]="{'active': selected == 'orders'}">
+          <!-- <i class="bi bi-bag-check"></i> -->
+          <i class="bi bi-bag"></i>
+          <h5>Track My Orders</h5>
+          <span></span>
+        </li>
+        <li routerLink="/profile/edit-profile" [ngClass]="{'active': selected == 'edit'}">
+          <i class="bi bi-pencil-square"></i>
+          <h5>Edit Profile</h5>
+          <span></span>
+        </li>
+        <li routerLink="/profile/change-password" [ngClass]="{'active': selected == 'password'}">
+          <i class="bi bi-key"></i>
+          <h5>Change Password</h5>
+          <span></span>
+        </li>
+        <li routerLink="/profile/payment-history" [ngClass]="{'active': selected == 'history'}">
+          <!-- <i class="bi bi-clock-history"></i> -->
+          <i class="bi bi-bag-check"></i>
+          <h5>Completed Orders</h5>
+          <span></span>
+        </li>
+        <li class="logout">
+          <i class="bi bi-box-arrow-right"></i>
+          <h5>Logout</h5>
+        </li>
+      </ul>
+    </div>
+    <div class="screen">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<h2>Edit Profile</h2>
+<hr>
+<form action="">
+  <div class="edit-image">
+    <div class="img">
+      <img *ngIf="!userData?.pic" src="../../../../assets/Pics/no-image-user.png" alt="user">
+      <img *ngIf="userData?.pic" [src]="'../../../assets/Pics/' + userData?.pic" alt="user">
+      <span>
+        <i class="bi bi-pen-fill"></i>
+      </span>
+    </div>
+    <div class="btns">
+      <button type="button" class="btn btn-secondary">Choose another photo...</button>
+      <button type="button" class="btn btn-danger">Delete profile photo</button>
+    </div>
+  </div>
+  <div class="input names">
+    <div class="form-floating mb-4">
+      <input type="text" class="form-control" id="floatingInput" placeholder="" [value]="userData?.fName">
+      <label for="floatingInput">First name</label>
+    </div>
+    <div class="form-floating mb-4">
+      <input type="text" class="form-control" id="floatingInput" placeholder="" [value]="userData?.lName">
+      <label for="floatingInput">Last name</label>
+    </div>
+  </div>
+  <div class="input form-floating mb-4">
+    <input type="text" class="form-control" id="floatingInput" placeholder="" [value]="userData?.userName">
+    <label for="floatingInput">Username</label>
+  </div>
+  <div class="input form-floating mb-4">
+    <input type="text" class="form-control" id="floatingInput" placeholder="" [value]="userData?.phoneNumber">
+    <label for="floatingInput">Phone number</label>
+  </div>
+  <button type="button" class="save btn btn-primary">Save changes</button>
+</form>

@@ -1,0 +1,37 @@
+<div class="heading">
+
+  <div class="select">
+    <select class="form-select" aria-label="Default select example"
+    [(ngModel)]="filter"
+    (ngModelChange)="changeFilter($event)">
+        <option value="All">All</option>
+        <option [value]="category.name"
+        *ngFor="let category of categories"
+        >{{ category.name }}</option>
+    </select>
+
+  </div>
+
+  <div class="search">
+    <input class="form-control me-2" type="search"
+    placeholder="Search..." aria-label="Search"
+    [(ngModel)]="searchText"
+    (input)="search()">
+    <!-- <button class="btn btn-outline-success" type="submit">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button> -->
+  </div>
+
+  <div class="layout">
+    <button (click)="LayoutThree()" class="grid"
+    [ngClass]="{'active-layout': !fullWidth}">
+    <i class="fa-solid fa-grip"></i>
+  </button>
+  <button (click)="LayoutOne()" class="one"
+  [ngClass]="{'active-layout': fullWidth}">
+  <i class="fa-solid fa-list"></i>
+</button>
+</div>
+
+</div>
+

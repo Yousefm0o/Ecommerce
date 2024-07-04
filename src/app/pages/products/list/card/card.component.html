@@ -1,0 +1,55 @@
+<div class="card" [ngClass]="{'full' : widthState}" [style]="cardStyle" (click)="$event.preventDefault(); goToDetails(product?.id)">
+  <span class="sale" *ngIf="product?.sale?.saleExist && !widthState">
+    {{ product?.sale?.value }}%
+    <span>Sale</span>
+  </span>
+  <mat-card>
+    <mat-card-content class="card-content" [ngClass]="{'full-width' : widthState}">
+      <div [ngClass]="{'sec-1' : widthState}">
+        <h6 class="category">
+          {{ product?.category?.name }}
+        </h6>
+        <span class="Sale"  *ngIf="product?.sale?.saleExist && widthState">
+          {{ product?.sale?.value }}%
+          <span>Sale</span>
+        </span>
+        <img [src]="product?.images?.at(0)" alt="">
+      </div>
+      <div [ngClass]="{'sec-2' : widthState}">
+        <div [ngClass]="{'sec-2-1' : widthState}">
+          <h5 class="title">
+            <span *ngIf="widthState">Title : </span>
+            {{ product?.title }}
+          </h5>
+          <p class="desc truncate">
+            <span *ngIf="widthState">Description : </span>
+            {{ product?.description }}
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis, animi adipisci in nemo fugit eveniet dolorem eligendi, excepturi ab placeat voluptas eos illum, dignissimos facere quidem cupiditate optio! Soluta laborum fugiat corrupti in illum nemo eum modi odit, a voluptas repudiandae doloremque numquam autem? Similique soluta nulla perferendis totam labore sed, neque beatae! Sequi ea minus atque libero officia harum aut officiis blanditiis? Dolore ullam expedita unde vitae amet quibusdam odit neque ad magni maiores aspernatur, quod saepe non voluptatum velit, recusandae doloribus numquam eius ab provident. Neque in nemo commodi est qui praesentium mollitia ut. Ipsum veritatis culpa ullam corporis id fuga, nobis fugiat quas vitae odit quibusdam dolorem quisquam vel quis eius voluptatem ipsam rem cupiditate iure debitis totam error dignissimos tenetur numquam? Aliquid expedita aut obcaecati eligendi eum fugiat cupiditate repellat dicta nostrum consequatur porro rem quidem rerum id, iusto quis est praesentium delectus illum odio ut ad recusandae quibusdam molestiae. Dolores amet perspiciatis facilis voluptates dignissimos et numquam obcaecati fugit expedita recusandae, unde, id maxime? Possimus non provident, omnis aliquid id, ex vitae labore optio et facere, incidunt minima culpa. Harum excepturi sed expedita laborum facere enim magnam quidem fugit quia. Id dignissimos harum eveniet repellat?
+          </p>
+        </div>
+        <div [ngClass]="{'sec-2-2' : widthState}">
+          <div class="purchase">
+            <div class="price">
+              <p>
+                <span *ngIf="widthState" class="txt">Price : </span>
+                <span [ngClass]="{'actual-price' : product?.sale?.saleExist}">
+                  {{ product?.price | currency }}
+                </span>
+                <span [ngClass]="{'new-price' : product?.sale?.saleExist}"
+                *ngIf="product?.sale?.saleExist">
+                  {{ sale | currency }}
+                </span>
+              </p>
+            </div>
+            <div class="btns">
+              <button type="button" class="btn btn-outline-danger preview"
+              (click)="$event.preventDefault(); goToDetails(product?.id)">Preview</button>
+              <button type="button" class="btn btn-primary buy"
+              (click)="$event.preventDefault(); addToCart($event)">Add to cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

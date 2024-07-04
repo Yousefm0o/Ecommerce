@@ -1,0 +1,18 @@
+<div class="wrapper"
+[ngClass]="{ 'space-bottom':  (filteredProducts.length == 0 || searchedProducts.length == 0) }">
+  <div class="empty" *ngIf="filteredProducts.length == 0">
+  There are no available products from this category at the moment.
+  </div>
+  <div class="empty" *ngIf="searchedProducts.length == 0 && filteredProducts.length > 0">
+  The product you are looking for is not available at the moment, you can inform us by email to provide that product in our products list as soon as possible.
+  </div>
+  <mat-grid-list *ngIf="searchedProducts.length > 0" [cols]="columnsView" [rowHeight]="height"  class="columns">
+    <mat-grid-tile class="tile"
+    *ngFor="let product of searchedProducts">
+      <card [ngClass]="{'card-container': widthState}" [product]="product"></card></mat-grid-tile>
+    <!-- <mat-grid-tile><card></card></mat-grid-tile>
+    <mat-grid-tile><card></card></mat-grid-tile>
+    <mat-grid-tile><card></card></mat-grid-tile>
+    <mat-grid-tile><card></card></mat-grid-tile> -->
+  </mat-grid-list>
+</div>

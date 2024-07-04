@@ -1,0 +1,80 @@
+<h2>Track My orders</h2>
+<hr>
+<div class="wrapper">
+  <div class="accordion" id="accordionPanelsStayOpenExample">
+    <div class="accordion-item" *ngFor="let order of orders">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+          <span>Order ID: {{ order?.id }}</span>
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+        <div class="accordion-body">
+          <!-- <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow. -->
+          <div class="info">
+            <h6>General info:</h6>
+            <ul>
+              <!-- <li><strong>Order status: </strong>{{ order.status }}</li> -->
+              <li>Order status: <strong>{{ order.status }}</strong></li>
+              <li>Products price: <strong>{{ order.totalPrice| currency }}</strong></li>
+              <li>Delivery: <strong>{{ 15| currency }}</strong></li>
+              <li>Total price: <strong>{{ order.totalPrice + 15| currency }}</strong></li>
+              <li>Payment method: <strong>{{ order.paymentMethod }}</strong></li>
+            </ul>
+            <!-- <span><strong>Order status: </strong>{{ order.status }}</span>
+            <span><strong>Total price (products price + delivery): </strong>{{ order.totalPrice }}</span>
+            <span><strong>Payment method: </strong>{{ order.paymentMethod }}</span> -->
+          </div>
+          <div class="address-info">
+            <h6>Address info:</h6>
+            <ul>
+              <li>State: <strong>{{ order.state }}</strong></li>
+              <li>City: <strong>{{ order.city }}</strong></li>
+              <li>Full address: <strong>{{ order.address }}</strong></li>
+            </ul>
+            <!-- <span><strong>State: </strong>{{ order.state }}</span>
+            <span><strong>City: </strong>{{ order.city }}</span>
+            <span><strong>Full address: </strong>{{ order.address }}</span> -->
+          </div>
+          <div class="items">
+            <h6>Items:</h6>
+            <div class="item" *ngFor="let item of order.items; index as i" [ngClass]="{'item-color': i%2 == 0}">
+              <div class="img">
+                <img [src]="item.productImg" alt="">
+              </div>
+              <div class="item-info">
+                <span>Name: <strong>{{ item.title }}</strong></span>
+                <span>Quantity: <strong>{{ item.quantity }}</strong></span>
+                <span>Price: <strong>{{ item.price | currency }}</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+          Accordion Item #2
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+        <div class="accordion-body">
+          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
+    </div> -->
+    <!-- <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+          Accordion Item #3
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+        <div class="accordion-body">
+          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
+    </div> -->
+  </div>
+</div>

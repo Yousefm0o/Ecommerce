@@ -1,0 +1,37 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: "Bai Jamjuree", sans-serif; background-color: #fff;
+}
+
+.snackbar-success {
+  .mat-mdc-button.mat-mdc-snack-bar-action {
+    color: dodgerblue !important;
+  }
+}
+
+.snackbar-danger {
+  .mat-mdc-button.mat-mdc-snack-bar-action {
+    color: red !important;
+  }
+}
+
+.snackbar-warning {
+  .mat-mdc-button.mat-mdc-snack-bar-action {
+    color: #ffc107 !important;
+  }
+}
+
+::-webkit-scrollbar {
+  height: 15px;
+}
+
+::-webkit-scrollbar-track {
+  height: 5px !important;
+  background-color: rgb(198, 222, 244);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: dodgerblue;
+  /* border-radius: 5px;; */
+}

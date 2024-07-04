@@ -1,0 +1,62 @@
+{
+  "fName": "yousef",
+  "lName": "mohamed",
+  "userName": "yousef.m0o",
+  "phoneNumber": "01021886775",
+  "pic": "profile.png",
+  "orders": [
+    {
+      "id": 1,
+      "date": "May 30, 2024",
+      "status": "shipped",
+      "items": [
+        {
+          "productImg": "https://i.imgur.com/yVeIeDa.jpeg",
+          "title": "Sleek Wireless Headphone & Inked Earbud Set",
+          "price": 44,
+          "quantity": 3,
+          "saleExist": false,
+          "newPrice": 0
+        },
+        {
+          "productImg": "https://i.imgur.com/9LFjwpI.jpeg",
+          "title": "Classic Red Jogger Sweatpants",
+          "price": 98,
+          "quantity": 2,
+          "saleExist": true,
+          "newPrice": 88
+        },
+        {
+          "productImg":  "https://i.imgur.com/wXuQ7bm.jpeg",
+          "title": "Classic Blue Baseball Cap",
+          "price": 86,
+          "quantity": 4,
+          "saleExist": true,
+          "newPrice": 69
+        }
+      ],
+      "totalPrice": 672,
+      "address": "Cairo",
+      "city": "Cairo",
+      "state": "Cairo",
+      "paymentMethod": "cash"
+    }
+  ],
+  "paymentHistory": [
+    {
+      "count": 5,
+      "cost": 730,
+      "date": "Jan 12, 2024"
+    },
+    {
+      "count": 1,
+      "cost": 90,
+      "date": "Mar 30, 2024"
+    },
+    {
+      "count": 3,
+      "cost": 320,
+      "date": "May 5, 2024"
+    }
+  ]
+}

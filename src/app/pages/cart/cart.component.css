@@ -1,0 +1,300 @@
+.page {
+  width: 1200px;
+  min-height: 80vh;
+  margin: 100px auto;
+}
+
+.wrapper {
+  margin: 0px auto;
+  margin-top: 100px;
+  /* position: relative;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%); */
+}
+
+.wrapper .btns {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrapper .btns button {
+  font-size: 18px;
+}
+
+.wrapper .btns button:nth-child(1) i {
+  transform: rotate(-90deg);
+  margin-right: 10px;
+}
+
+.wrapper .btns button:nth-child(2) i {
+  margin-left: 10px;
+}
+
+.scroll {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  gap: 5px;
+}
+
+.scroll p {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0px;
+  color: #166bf9;
+}
+
+.scroll .arrows {
+  font-size: 25px;
+  margin: 0px;
+  transform: translateX(-40px);
+  animation-name: to-right;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+}
+
+.scroll .arrows i {
+  color: #166bf9;
+}
+
+@keyframes to-right {
+  0% {
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(20px);
+    opacity: 1;
+  }
+}
+
+.container {
+  /* margin-top: 100px; */
+  max-width: 1280px;
+  /* max-height: 580px; */
+  overflow: auto;
+  padding: 0px;
+  border-radius: 12px;
+  background-color: #ddd;
+}
+
+/* table {
+  height: 580px;
+} */
+
+.table-header {
+  background-color: #222 !important;
+  color: #fff;
+}
+
+.table-footer {
+  background-color: #e9ecef;
+}
+
+.empty {
+  width: 600px;
+  padding: 25px 20px;
+  text-align: center;
+  background-color:aliceblue;
+  color: #000;
+  font-size: 20px;
+  border-radius: 10px;
+  /* margin: 0px auto;
+  margin-top: 300px; */
+  /* margin-bottom: 200px; */
+  /* margin-top: 500px; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.empty span {
+  display: block;
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+table {
+  width: 100%;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.product {
+  min-width: 200px;
+}
+
+.name {
+  min-width: 150px;
+}
+
+.price {
+  min-width: 100px;
+}
+
+.quantity {
+  min-width: 100px;
+}
+
+.total {
+  min-width: 100px;
+}
+
+.action {
+  min-width: 150px;
+}
+
+th.header {
+  background-color: #222 !important;
+  color: #fff;
+  font-size: 18px;
+  /* font-weight: 500; */
+}
+
+tr.mat-mdc-footer-row {
+  font-weight: bold;
+}
+
+/* .mat-mdc-table-sticky {
+} */
+
+.table-header {
+  font-size: 20px;
+}
+
+th {
+  text-align: center;
+}
+
+td {
+  text-align: center;
+  width: 10%;
+  font-size: 16px;
+}
+
+.pricing {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pricing span {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.pricing .actual-price {
+  text-decoration: line-through;
+  font-size: 16px;
+  color: #555;
+}
+
+.quantity-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.quantity-container span {
+  display: block;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 18px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.quantity-container span:hover {
+  background-color: #4c4c4c;
+}
+
+
+.total-cost {
+  font-size: 20px;
+  color: red;
+  font-weight: 500;
+}
+
+td img {
+  padding: 10px;
+  margin: 0px;
+}
+
+button.remove {
+  font-size: 17px;
+  transform: scale(.9);
+}
+
+.image {
+  max-width: 150px;
+}
+
+#clear-all {
+  width: 100px !important;
+}
+
+@media (max-width: 1280px) {
+  .page {
+    width: calc(100% - 40px);
+  }
+}
+
+@media (max-width: 800px) {
+  .wrapper .scroll {
+    display: flex;
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    width: calc(100% - 20px);
+  }
+
+  .empty {
+    width: calc(100% - 40px);
+  }
+}
+
+@media (max-width: 576px) {
+  .wrapper .btns button {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+
+}
+
+@media (min-width: 767px) and (max-width: 992px) {
+
+}
+
+@media (min-width: 993px) and (max-width: 1200px) {
+
+}
+
+@media (min-width: 1201px) and (max-width: 1280px) {
+
+}
+
+@media (max-width: 1280px) {
+
+}
+

@@ -1,0 +1,100 @@
+.wrapper {
+  background-color: rgb(221, 235, 248);
+  max-width: 1280px;
+  min-height: 300px;
+  position: relative;
+  margin: 10px auto;
+  /* padding-top: 10px;
+  padding-bottom: 10px; */
+  /* border-radius: 12px; */
+}
+
+.columns {
+  margin: 0px auto;
+}
+
+.card-container {
+  width: 95%;
+
+}
+
+.empty {
+  width: 600px;
+  padding: 25px 20px;
+  text-align: center;
+  background-color: #fff;
+  color: #000;
+  font-size: 20px;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.space-bottom {
+  margin-bottom: 300px;
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .columns {
+    width: 100%;
+  }
+  .card-container {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .columns {
+    width: 100%;
+  }
+  .card-container {
+    width: 100%;
+    /* margin: 0px auto; */
+
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+
+}
+
+@media (max-width: 1280px) {
+  .wrapper {
+    max-width: calc(100% - 20px);
+    padding: 5px 0px;
+  }
+}
+
+
+@media (max-width: 1200px) {
+
+  .wrapper {
+    max-width: calc(100% - 20px);
+    padding: 5px 0px;
+  }
+  .columns {
+    width: 100%;
+  }
+  .card-container {
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .empty {
+    width: calc(100% - 40px);
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 575px) {
+  .columns {
+    width: 100%;
+  }
+  .card-container {
+    width: 100%;
+  }
+}

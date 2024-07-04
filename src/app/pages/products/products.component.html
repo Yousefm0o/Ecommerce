@@ -1,0 +1,7 @@
+<div class="wrapper">
+  <heading [categories]="categories"
+  (filterChange)="changeFilter($event)"
+  [(filter)]="filter"
+  ></heading>
+  <list [products]="products"></list>
+</div>

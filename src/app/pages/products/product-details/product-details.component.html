@@ -1,0 +1,78 @@
+<div class="wrapper card-content full-width">
+    <div class="sec-1">
+      <button type="button" class="btn btn-success" routerLink="/products">
+        <i class="fa-solid fa-turn-up turn"></i>
+        Back
+      </button>
+
+      <h6 class="category">
+        {{ product?.category?.name }}
+      </h6>
+      <div id="carouselExampleInterval" class="carousel slide photos" data-bs-ride="carousel">
+        <span class="sale-value" *ngIf="product?.sale?.saleExist">
+          {{ product?.sale?.value }}% <span>Sale</span>
+        </span>
+        <div id="carouselExampleIndicators" class="carousel slide">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item" data-bs-interval="2500"
+            *ngFor="let img of product?.images; index as i"
+            [ngClass]="{'active': i === 0}">
+              <img [src]="product?.images?.at(i)" alt="">
+            </div>
+          </div>
+          <button class="carousel-control carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-2">
+      <div class="sec-2-1">
+        <h5 class="title">
+          <span>Title : </span>
+          {{ product?.title }}
+        </h5>
+        <p class="desc truncate">
+          <span>Description : </span>
+          {{ product?.description }}
+        </p>
+      </div>
+      <div class="sec-2-2">
+          <div class="purchase">
+            <div class="price">
+              <p>
+                <span class="txt">Price : </span>
+                <span [ngClass]="{'actual-price' : product?.sale?.saleExist}">
+                  {{ product?.price | currency }}
+                </span>
+                <span [ngClass]="{'new-price' : product?.sale?.saleExist}"
+                *ngIf="product?.sale?.saleExist">
+                  {{ sale | currency }}
+                </span>
+                <!-- <span class="sale-value">
+                  {{ product?.sale?.value }}% <span>Sale</span>
+                </span> -->
+                <!-- <span>Price : </span>
+                {{ product?.price | currency }} -->
+              </p>
+            </div>
+            <div class="btns">
+              <!-- <button type="button" class="btn btn-outline-danger preview">Preview</button> -->
+              <button type="button" class="btn btn-primary buy" (click)="addToCart()">Add to cart</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  <!-- </div> -->
+</div>

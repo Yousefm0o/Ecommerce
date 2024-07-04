@@ -1,0 +1,206 @@
+<main>
+  <section class="Intro">
+    <div class="overlay"></div>
+    <div class="wrapper">
+      <div class="intro">
+        <!-- <h1>EG-Technology</h1> -->
+        <picture>
+          <source srcset="../../../assets/Pics/landing-logo-2.svg" media="(max-width: 1000px)">
+          <img src="../../../assets/Pics/landing-logo.svg" alt="">
+        </picture>
+        <p>If you're Looking for high quality products, then you're in the right place.</p>
+        <div class="buttons">
+          <div class="arrow-1">
+            <span class="arrow left">Up</span>
+          </div>
+          <div class="arrow-2">
+            <span class="arrow right">Up</span>
+          </div>
+          <button class="blob-btn" routerLink="/products">
+              GET STARTED
+            <span class="blob-btn__inner">
+              <span class="blob-btn__blobs">
+                <span class="blob-btn__blob"></span>
+                <span class="blob-btn__blob"></span>
+                <span class="blob-btn__blob"></span>
+                <span class="blob-btn__blob"></span>
+              </span>
+            </span>
+          </button>
+          <br/>
+
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <defs>
+              <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7" result="goo"></feColorMatrix>
+                <feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend>
+              </filter>
+            </defs>
+          </svg>
+        </div>
+
+        <button class="scroll-down" (click)="scrollBottom(target)"><span></span><span></span><span></span></button>
+      </div>
+
+    </div>
+  </section>
+
+    <section class="products" #target>
+      <div class="wrapper">
+        <div class="special-heading">
+          <h2>PRODUCTS</h2>
+          <p>Here are the main categories.</p>
+        </div>
+        <div>
+
+          <!-- <mat-accordion class="accordion">
+            <mat-expansion-panel #panel [expanded]="step === category.id" (opened)="setStep(category.id)" hideToggle
+            *ngFor="let category of categories"
+            [ngClass]="{'opened': panel.expanded}">
+              <mat-expansion-panel-header class="head">
+                <mat-panel-title class="header">
+                    {{ category.name }}
+                </mat-panel-title>
+                <mat-panel-description class="description">
+                  <button type="button" class="btn category"
+                  [ngClass]="{ 'btn-success': panel.expanded, 'btn-outline-success': !panel.expanded }"
+                  (click)="goToCategory(category)">
+                    Go to {{ category.name }}
+                  </button>
+                </mat-panel-description>
+                <i class="fa-solid fa-caret-down"
+                [ngClass]="{'invert': panel.expanded}"></i>
+              </mat-expansion-panel-header>
+              <div class="info">
+                <div class="img">
+                  <img [src]="category.image" alt="category">
+                </div>
+                <div class="desc">
+                  <h5>Category Name: <span>{{ category.name }}</span></h5>
+                  <h5>Description: </h5>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet inventore cupiditate nam? Consectetur iure accusamus minima sapiente cum dolorum commodi distinctio, ducimus similique dolores quae fugiat architecto, harum odit error.</p>
+                </div>
+              </div>
+              <mat-action-row>
+                <button mat-button color="warn" (click)="prevStep()" *ngIf="category.id > 1">Previous</button>
+                <button mat-button color="primary" (click)="nextStep()" *ngIf="category.id < categoriesNumber">Next</button>
+              </mat-action-row>
+            </mat-expansion-panel>
+          </mat-accordion> -->
+          <div class="contain">
+            <div class="row" id="row" #scrollContainer>
+              <span class="scroll L" (click)="scrollLeft()">
+                <i class="fa-solid fa-angle-left"></i>
+              </span>
+              <span class="scroll R" (click)="scrollRight()">
+                <i class="fa-solid fa-angle-right"></i>
+              </span>
+              <div class="row-inner">
+                <div class="tile" #tiles
+                (mouseenter)="highlightPreviousTiles($event)"
+                (mouseleave)="removeHighlight($event)"
+                *ngFor="let category of categories"
+                (click)="goToCategory(category)">
+                <h6 class="category">
+                  {{ category?.name }}
+                </h6>
+                <div class="tile-media">
+                  <img class="tile-img" [src]="category.image" alt="category"/>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="quote">
+        <div>
+            <p>"We produce high quality products that match your needs and last for along time."</p>
+            <!-- <span>John Doe</span> -->
+        </div>
+      </div>
+    </section>
+
+    <section class="payment">
+      <div class="wrapper">
+        <div class="special-heading">
+          <h2>PAYMENT METHODS</h2>
+          <p>We have made it easy for you to pay using different methods. Feel free to use any of them.</p>
+        </div>
+      </div>
+    </section>
+    <section class="contact" id="contact">
+      <div class="wrapper">
+        <div class="special-heading">
+          <h2>CONTACT US</h2>
+          <p>Drop here your problems, any suggestions, or products that you need them to be included.</p>
+        </div>
+        <div class="container">
+          <form
+          [formGroup]="groupForm"
+          (ngSubmit)="$event.preventDefault(); submitForm()">
+
+            <div class="mt-3 mb-3">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" placeholder="" formControlName="senderName">
+                <label for="floatingInput">Your name</label>
+              </div>
+              <div class="text-danger"
+              *ngIf="groupForm.get('senderName')?.invalid &&
+              (groupForm.get('senderName')?.dirty || groupForm.get('senderName')?.touched)">
+              <span *ngIf="groupForm.get('senderName')?.hasError('required')">
+              *field is required.</span>
+              <span *ngIf="groupForm.get('senderName')?.hasError('minlength')
+              && groupForm.get('senderName')?.touched">
+              *name must be 3 letters at least.</span>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInput" placeholder="" formControlName="senderEmail">
+                <label for="floatingInput">Email address</label>
+              </div>
+              <div class="text-danger"
+              *ngIf="groupForm.get('senderEmail')?.invalid &&
+              (groupForm.get('senderEmail')?.dirty || groupForm.get('senderEmail')?.touched)">
+              <span *ngIf="groupForm.get('senderEmail')?.hasError('required')">
+              *field is required.</span>
+              <span *ngIf="groupForm.get('senderEmail')?.hasError('email')
+              && groupForm.get('senderEmail')?.touched">
+              *invalid email address.</span>
+              <span *ngIf="groupForm.get('senderEmail')?.hasError('invalidDomain')
+              && groupForm.get('senderEmail')?.touched
+              && !groupForm.get('senderEmail')?.hasError('email')">
+              *email provider is not allowed.</span>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="form-floating">
+                <textarea name="message-field text-area" class="form-control" placeholder="" id="message-box" cols="30" rows="10"
+                style="min-height: 180px" formControlName="senderMessage"></textarea>
+                <label for="message-box">Message...</label>
+              </div>
+              <div class="text-danger"
+              *ngIf="groupForm.get('senderMessage')?.invalid &&
+              (groupForm.get('senderMessage')?.dirty || groupForm.get('senderMessage')?.touched)">
+              <span *ngIf="groupForm.get('senderMessage')?.hasError('required')">
+              *field is required.</span>
+              <span *ngIf="groupForm.get('senderMessage')?.hasError('minlength')
+              && groupForm.get('senderMessage')?.touched">
+              *message must be 10 letters at least.</span>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary mb-3 submit"
+            [disabled]="groupForm.invalid"
+            >Submit</button>
+
+          </form>
+
+        </div>
+      </div>
+    </section>
+</main>
