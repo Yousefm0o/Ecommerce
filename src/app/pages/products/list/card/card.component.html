@@ -33,11 +33,11 @@
               <p>
                 <span *ngIf="widthState" class="txt">Price : </span>
                 <span [ngClass]="{'actual-price' : product?.sale?.saleExist}">
-                  {{ product?.price | currency }}
+                  {{ product?.price | currency: 'EGP ' }}
                 </span>
                 <span [ngClass]="{'new-price' : product?.sale?.saleExist}"
                 *ngIf="product?.sale?.saleExist">
-                  {{ sale | currency }}
+                  {{ sale | currency: 'EGP ' }}
                 </span>
               </p>
             </div>
